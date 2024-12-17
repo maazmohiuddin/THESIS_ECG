@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Header from '@/components/Base/Header';
 import HomePage from '@/components/HomePage';
-import UploadImage1 from '@/components/UploadImage1';
 
 export default function Home() {
     const [isToggled, setIsToggled] = useState<boolean>(true);

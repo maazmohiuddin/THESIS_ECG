@@ -4,7 +4,7 @@ import UploadImageleft from "../UploadImageleft";
 import Processing from "../Processing";
 import AnalyzedResults from "../AnalyzedResults";
 
-const UploadImage1 = () => {
+const UploadImage = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
@@ -14,4 +14,4 @@ const UploadImage1 = () => {
     );
 };
 
-export default UploadImage1;
+export default UploadImage;
