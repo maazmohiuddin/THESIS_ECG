@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+      },
+      backgroundImage: {
+        redbutton: "var(--redbutton)",
+        whitebutton: "var(--whitebutton)",
       },
     },
   },
