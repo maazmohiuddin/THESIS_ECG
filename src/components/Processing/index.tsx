@@ -11,7 +11,7 @@ const Processing = () => {
                     backgroundImage: `url(images/processbg.png)`,
                     objectFit: 'contain',
                 }}
-                className="border-none mt-10 p-5 rounded-xl shadow-lg flex-1 flex justify-center items-center"
+                className="border border-gray-50 mt-10 p-5 rounded-xl shadow-lg flex-1 flex justify-center items-center"
             >
                 <div className="w-full p-4 flex justify-center items-center">
                     <div className="flex flex-col justify-center items-center gap-2">

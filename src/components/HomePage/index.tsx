@@ -5,9 +5,10 @@ import BaseImage from '@/components/Base/BaseImage';
 import Link from 'next/link';
 
 interface Prop {
-    handleToggle: () => void;
+    handleToggle?: () => void;
+    fn: () => void;
 }
-export default function HomePage({ handleToggle }: Prop) {
+export default function HomePage({ fn }: Prop) {
     return (
         <div className='w-full'>
             <div className='px-4 flex-grow flex flex-col justify-center items-center'>
@@ -34,7 +35,7 @@ export default function HomePage({ handleToggle }: Prop) {
                     <div className='gap-4'>
                         <button
                             className='bg-whitebutton text-black px-4 py-2 rounded-md'
-                            onClick={handleToggle}
+                            onClick={fn}
                         >
                             Get Started
                         </button>

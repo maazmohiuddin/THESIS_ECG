@@ -1,8 +1,9 @@
-import Home from "./(public)/home/home";
+import Layout from "./(public)/layout";
+import Home from "./(public)/page";
 export default function main() {
   return (
-    <div className="min-h-screen text-text justify-center">
+    <Layout>
       <Home />
-    </div>
-  );
-}
+    </Layout>
+
+)  }
