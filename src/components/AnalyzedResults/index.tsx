@@ -12,7 +12,7 @@ export default function AnalyzedResults() {
                 backgroundRepeat: 'no-repeat',
                 width: '100% !important',
             }}
-            className="border-none w-full mt-10 p-5 rounded-xl shadow-lg flex-1 box-border"
+            className="border border-gray-50 w-full mt-10 p-10 rounded-xl shadow-lg flex-1 box-border"
         >
             <div className='flex flex-col gap-2'>
                 <BaseImage

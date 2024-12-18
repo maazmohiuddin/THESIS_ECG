@@ -4,22 +4,27 @@ import Heading from "../Base/Heading";
 import BaseImage from "../Base/BaseImage";
 
 
-const UploadImageleft = () => {
+interface UploadImageleftProps {
+    processNext: () => void;
+    cancelFn: () => void;
+}
+
+const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn }) => {
     const [file, setFile] = useState<File | null>(null);
     const [progress, setProgress] = useState(50);
-    const [preview, setPreview] = useState<string | undefined>(undefined); 
+    const [preview, setPreview] = useState<string | undefined>(undefined);
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const uploadedFile = e.target.files?.[0];
         if (uploadedFile) {
             setFile(uploadedFile);
             setProgress(60);
             const imageUrl = URL.createObjectURL(uploadedFile);
-            setPreview(imageUrl);  
+            setPreview(imageUrl);
         }
     };
     const handleRemove = () => {
         setFile(null);
-        setPreview(undefined); 
+        setPreview(undefined);
         setProgress(0);
     };
 
@@ -30,7 +35,7 @@ const UploadImageleft = () => {
                     backgroundImage: `url(images/processbg.png)`,
                     objectFit: 'contain',
                 }}
-                className="border-none mt-10 p-5 rounded-xl shadow-lg flex-1"
+                className="border border-gray-50 mt-10 p-5 rounded-xl shadow-lg flex-1"
             >
                 <div className="w-full border-b border-gray-300 pb-4 pl-0 pr-0">
                     <div className="flex items-center align-middle gap-2">
@@ -123,10 +128,10 @@ const UploadImageleft = () => {
                 )}
 
                 <div className="flex justify-end space-x-2">
-                    <button className="px-5 py-1 bg-whitebutton text-black rounded-md">
+                    <button className="px-5 py-1 bg-whitebutton text-black rounded-md" onClick={processNext}>
                         Process
                     </button>
-                    <button className="px-5 py-1 bg-gradient-red text-white rounded-md">
+                    <button className="px-5 py-1 bg-gradient-red text-white rounded-md" onClick={cancelFn}>
                         Cancel
                     </button>
                 </div>
