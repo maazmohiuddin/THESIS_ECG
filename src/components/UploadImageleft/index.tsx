@@ -33,39 +33,45 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
             <div
                 style={{
                     backgroundImage: `url(images/processbg.png)`,
-                    objectFit: 'contain',
+                    objectFit: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    width: '100%',
                 }}
-                className="border border-gray-50 mt-10 p-5 rounded-xl shadow-lg flex-1"
+                className="mt-10 p-5 w-full rounded-xl shadow-lg flex-1 bg-cover bg-center"
             >
-                <div className="w-full border-b border-gray-300 pb-4 pl-0 pr-0">
-                    <div className="flex items-center align-middle gap-2">
+                <div className="w-full border-b border-gray-300 pb-4">
+                    <div className="flex items-center gap-4">
                         <div>
                             <BaseImage
-                                src='/images/uploadicon.png'
+                                src="/images/uploadicon.png"
                                 height={10}
                                 width={50}
                                 alt="Upload Image"
                             />
                         </div>
-                        <div className="space-y-0 gap-0">
-                            <Heading level={5} className="whitespace-normal text-white text-lg font-medium mb-2">Upload Image</Heading>
-                            <p className="text-gray-400 text-sm mb-4">Select ECG image you want analyze</p>
+                        <div className="space-y-0">
+                            <Heading level={5} className="whitespace-normal text-white text-lg font-medium mb-1">
+                                Upload Image
+                            </Heading>
+                            <p className="text-gray-400 text-sm">
+                                Select ECG image you want to analyze
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div className="w-full border-gray-300"></div>
                 {!file ? (
-                    <div className="flex flex-col gap-3 justify-center items-center mt-4 border-2 border-dashed border-[#FFFFFF] rounded-lg p-10 text-center mb-5">
+                    <div className="flex flex-col gap-3 justify-center items-center mt-4 border-2 border-dashed border-[#FFFFFF] rounded-lg p-5 sm:p-8 lg:p-10 text-center mb-5">
                         <BaseImage
-                            src='/images/upload.png'
+                            src="/images/upload.png"
                             height={10}
                             width={50}
                             alt="Upload Image"
                         />
                         <p className="text-gray-300 text-sm mb-2">
-                            Choose and file or drag & drop it here
+                            Choose a file or drag & drop it here
                         </p>
-                        <p className="text-gray-500 text-xs">JPEG, PNG upto 50mb</p>
+                        <p className="text-gray-500 text-xs">JPEG, PNG up to 50mb</p>
                         <input
                             type="file"
                             className="hidden"
@@ -75,15 +81,15 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                         />
                         <label
                             htmlFor="fileUpload"
-                            className="inline-block mt-4 px-8 py-1.5 bg-whitebutton text-black rounded-lg cursor-pointer"
+                            className="inline-block mt-4 px-6 py-2 bg-whitebutton text-black rounded-lg cursor-pointer text-sm sm:text-base"
                         >
                             Browse
                         </label>
                     </div>
                 ) : (
-                    <div className="flex justify-center mt-4 mb-4 border-2 border-dashed border-[#FFFFFF] rounded-lg p-10 ">
+                    <div className="flex justify-center mt-4 mb-4 border-2 border-dashed border-[#FFFFFF] rounded-lg p-5 sm:p-8 lg:p-10">
                         <img
-                            src={preview} // Now preview is a string or undefined, no error
+                            src={preview}
                             alt="Uploaded Preview"
                             className="max-w-full h-auto rounded-lg shadow-md"
                         />
@@ -91,7 +97,7 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                 )}
 
                 {file && (
-                    <div className="flex items-center justify-between bg-gray-800 rounded-lg p-3 mb-4">
+                    <div className="flex flex-wrap items-center justify-between bg-gray-800 rounded-lg p-3 mb-4 gap-3">
                         <div className="flex items-center space-x-3">
                             <svg
                                 className="w-6 h-6 text-gray-300"
@@ -108,7 +114,7 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                                 />
                             </svg>
                             <div>
-                                <p className="text-gray-200 text-sm">{file.name}</p>
+                                <p className="text-gray-200 text-sm truncate">{file.name}</p>
                                 <p className="text-gray-400 text-xs">{progress} kb of 120 kb</p>
                             </div>
                         </div>
@@ -127,16 +133,17 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                     </div>
                 )}
 
-                <div className="flex justify-end space-x-2">
-                    <button className="px-5 py-1 bg-whitebutton text-black rounded-md" onClick={processNext}>
+                <div className="flex flex-wrap justify-end gap-2">
+                    <button className="px-4 py-2 bg-whitebutton text-black rounded-md text-sm sm:text-base" onClick={processNext}>
                         Process
                     </button>
-                    <button className="px-5 py-1 bg-gradient-red text-white rounded-md" onClick={cancelFn}>
+                    <button className="px-4 py-2 bg-gradient-red text-white rounded-md text-sm sm:text-base" onClick={cancelFn}>
                         Cancel
                     </button>
                 </div>
             </div>
         </div>
+
     );
 };
 
