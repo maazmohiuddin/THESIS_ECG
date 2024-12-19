@@ -1,8 +1,6 @@
-"use client";
 import React, { useState } from "react";
 import Heading from "../Base/Heading";
 import BaseImage from "../Base/BaseImage";
-
 
 interface UploadImageleftProps {
     processNext: () => void;
@@ -13,6 +11,7 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
     const [file, setFile] = useState<File | null>(null);
     const [progress, setProgress] = useState(50);
     const [preview, setPreview] = useState<string | undefined>(undefined);
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const uploadedFile = e.target.files?.[0];
         if (uploadedFile) {
@@ -22,6 +21,7 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
             setPreview(imageUrl);
         }
     };
+
     const handleRemove = () => {
         setFile(null);
         setPreview(undefined);
@@ -33,9 +33,9 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
             <div
                 style={{
                     backgroundImage: `url(images/processbg.png)`,
-                    objectFit: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                    width: '100%',
+                    objectFit: "cover",
+                    backgroundRepeat: "no-repeat",
+                    width: "100%",
                 }}
                 className="mt-10 p-5 w-full rounded-xl shadow-lg flex-1 bg-cover bg-center"
             >
@@ -50,7 +50,10 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                             />
                         </div>
                         <div className="space-y-0">
-                            <Heading level={5} className="whitespace-normal text-white text-lg font-medium mb-1">
+                            <Heading
+                                level={5}
+                                className="whitespace-normal text-white text-lg font-medium mb-1"
+                            >
                                 Upload Image
                             </Heading>
                             <p className="text-gray-400 text-sm">
@@ -121,7 +124,7 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                         <div className="flex-1 h-1 bg-gray-700 rounded overflow-hidden mx-3">
                             <div
                                 className="h-full bg-gradient-to-r from-[#F54461] to-[#830016]"
-                                style={{ width: '100%' }}
+                                style={{ width: "100%" }}
                             ></div>
                         </div>
                         <button
@@ -134,16 +137,25 @@ const UploadImageleft: React.FC<UploadImageleftProps> = ({ processNext, cancelFn
                 )}
 
                 <div className="flex flex-wrap justify-end gap-2">
-                    <button className="px-4 py-2 bg-whitebutton text-black rounded-md text-sm sm:text-base" onClick={processNext}>
+                    <button
+                        className={`px-4 py-2 rounded-md text-sm sm:text-base ${file
+                            ? "bg-whitebutton text-black"
+                            : "bg-whitebutton text-gray-700 cursor-not-allowed"
+                            }`}
+                        onClick={processNext}
+                        disabled={!file}
+                    >
                         Process
                     </button>
-                    <button className="px-4 py-2 bg-gradient-red text-white rounded-md text-sm sm:text-base" onClick={cancelFn}>
+                    <button
+                        className="px-4 py-2 bg-gradient-red text-white rounded-md text-sm sm:text-base"
+                        onClick={cancelFn}
+                    >
                         Cancel
                     </button>
                 </div>
             </div>
         </div>
-
     );
 };
 
